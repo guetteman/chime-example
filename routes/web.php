@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CreateMeetingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return inertia('Welcome');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('/meetings', CreateMeetingController::class)->name('meetings.store');
 });
