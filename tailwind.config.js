@@ -1,7 +1,7 @@
 module.exports = {
-  content: [],
+  content: ['./resources/**/*.tsx', './resources/views/**/*.blade.php'],
   theme: {
     extend: {},
   },
   plugins: [],
-}
+};

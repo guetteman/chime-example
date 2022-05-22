@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const path = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -14,4 +15,14 @@ const mix = require('laravel-mix');
 mix
   .ts('resources/js/app.tsx', 'public/js')
   .react()
-  .postCss('resources/css/app.css', 'public/css', [require('tailwindcss')]);
+  .postCss('resources/css/app.css', 'public/css', [require('tailwindcss')])
+  .webpackConfig({
+    resolve: {
+      alias: {
+        '@': path.resolve('resources/js'),
+      },
+    },
+    output: {
+      chunkFilename: 'js/[name].js?id=[chunkhash]',
+    },
+  });
