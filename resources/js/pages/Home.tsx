@@ -1,9 +1,9 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import { CreateMeetingForm } from '@/components/CreateMeetingForm';
-import { ButtonLink } from '@/components/ui/ButtonLink';
 import JoinMeetingForm from '@/components/JoinMeetingForm';
 import { Meeting } from '@/types';
+import { MeetingList } from '@/components/MeetingList';
 
 interface HomeProps {
   meetings: Meeting[];
@@ -23,26 +23,7 @@ export default function HomePage({ meetings }: HomeProps) {
 
             <CreateMeetingForm />
 
-            <div className="mt-10 divide-y">
-              {meetings.map(meeting => (
-                <div className="flex items-center justify-between py-4">
-                  <div>
-                    <h4 className="text-lg font-bold text-slate-700">
-                      {meeting.title}
-                    </h4>
-                    <span className="text-sm font-bold uppercase text-slate-400">
-                      {meeting.join_token}
-                    </span>
-                  </div>
-
-                  <div>
-                    <ButtonLink href={`/meetings/${meeting.join_token}`}>
-                      Join
-                    </ButtonLink>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <MeetingList meetings={meetings} />
           </div>
           <div className="w-2/5 pl-10">
             <h2 className="text-3xl font-bold text-slate-700">Join meeting</h2>
