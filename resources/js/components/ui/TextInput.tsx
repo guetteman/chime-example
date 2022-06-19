@@ -7,6 +7,7 @@ interface TextInputProps {
   type?: 'email' | 'password' | 'text';
   required?: boolean;
   value: string;
+  className?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -18,9 +19,10 @@ export function TextInput({
   required,
   value,
   onChange,
+  className = '',
 }: TextInputProps) {
   return (
-    <div>
+    <div className={className}>
       <label htmlFor={id} className="block text-sm font-medium text-slate-700">
         {label}
       </label>

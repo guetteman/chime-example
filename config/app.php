@@ -194,6 +194,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Aws\Laravel\AwsServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
+        App\Providers\ChimeServiceProvider::class,
     ],
 
     /*

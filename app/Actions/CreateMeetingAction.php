@@ -14,6 +14,7 @@ class CreateMeetingAction
         $meeting = Meeting::create([
             'title' => $title,
             'join_token' => Str::random(10),
+            'owner_id' => $user->id,
         ]);
 
         /** @var ChimeClient */
@@ -21,9 +22,9 @@ class CreateMeetingAction
 
         $chimeMeetingResponse = $chimeClient->createMeetingWithAttendees([
             'ClientRequestToken' => $meeting->join_token,
-            'ExternalMeetingId' => $meeting->id,
+            'ExternalMeetingId' => $meeting->join_token,
             'Attendees' => [
-                ['ExternalUserId' => $user->id],
+                ['ExternalUserId' => $user->email],
             ],
         ]);
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -17,6 +18,7 @@ return new class extends Migration {
             $table->string('title');
             $table->string('join_token');
             $table->json('join_data')->nullable();
+            $table->foreignIdFor(User::class, 'owner_id');
             $table->timestamps();
         });
     }
